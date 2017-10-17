@@ -18,10 +18,10 @@ class App extends Component {
   removeContact = (contact) => {
     this.setState((state) => ({
       contacts: state.contacts.filter((c) => c.id !== contact.id)
-    }))
+    }));
 
     ContactsAPI.remove(contact)
-  }
+  };
 
   createContact(contact) {
     ContactsAPI.create(contact).then(contact => {
@@ -41,14 +41,13 @@ class App extends Component {
           />
         )}/>
 
-        <Route path='/create' render={({ history }) => (
-          <CreateContact
-            onCreateContact={(contact) => {
-              this.createContact(contact)
-              history.push('/')
-            }}
-          />
-        )}/>
+       <Route path='/create' render={({ history }) => (
+         <CreateContact onCreateContact={(contact) => {
+           this.createContact(contact);
+           history.push('/')
+         }}
+       />
+         )}/>
       </div>
     )
   }
